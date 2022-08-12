@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/launchinstance">
+        <label >Choose a OS:</label>
+            <select  name="os">
+            <option value="ami-076e3a557efe1aa9c">Amazon Linux 2 Kernel 5.10 AMI 2.0.20220719.0 x86_64 HVM gp2</option>
+            <option value="ami-068257025f72f470d">Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2022-06-09</option>
+            <option value="ami-05c8ca4485f8b138a">Red Hat Enterprise Linux 8 (HVM), SSD Volume Type</option>
+            </select>
+            <br><br>
+            <label>Choose instance type:</label>
+            <select name="instance_type">
+              <option value="t2.micro">t2.micro</option>
+              <option value="t2.nano">t2.nano **paid</option>
+              <option value="t2.small">t2.small **paid</option>
+            </select>
+            <br><br>
+            <label>Accessibility:</label>
+            <select name="access">
+              <option value="sg-0c1e90a20de4fcb09">Only me </option>
+              <option value="sg-0d63ef239d73bc0bc">me + http traffic from web</option>
+              </select>
+              <br><br>
+              <!--<label>Storage :</label>
+            <select name="storage">
+              <option value="10">10 GB</option>
+              <option value="15">15 GB</option>
+              <option value="20">20 GB</option>
+              <option value="25">25 GB</option>
+              <option value="29">29 GB</option>
+              </select>
+              <br><br>-->
+              <label>Instance Name :</label>
+              <input type="text" name="instname" id="">
+              <br><br>
+              <label>Subnet :</label>
+            <select name="subid">
+              <option value="subnet-02aa0d0b827f65bf2">ap-south-1a</option>
+              <option value="subnet-0b2edd3a4aa1f65ef">ap-south-1b</option>
+              <option value="subnet-06ed1302a67f163dd">ap-south-1c</option>
+              </select>
+              <br><br><br>
+            <button onclick="alert('Instance Created.... Please wait to load the page ')" type="submit">Launch Instance</button>
+            <button type="reset" > load default </button>
+
+    </form>
+</body>
+</html>

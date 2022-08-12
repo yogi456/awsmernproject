@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body {
+        text-align: center;
+    }
+    div {
+        display: inline-block;
+    }
+    button {
+        display: inline-block;
+        padding: 10px 20px;
+    }
+    #table {
+        display: block;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+    }</style>
+</head>
+<body style="background-color: rgb(231, 206, 206);" onload="update()" >
+    <!--<a href="/instances">Your instances</a>-->
+    <h1 style=" color : rgb(83, 83, 194); text-align : center;" id="welcome" ></h1>
+    <br>
+    <div>
+        <P>- - -  - - -  Your Instances - - - - - </P>
+        <div id="table"></div>
+        <br>
+        <button> <a style="text-decoration: none;" href="/createinstance">create new instance </a></button> 
+    </div><br><br><br>
+    <form method="post" action="/runistance">
+        <input type="text" name="instanceid" placeholder="Instance ID" id="">
+        <input type="submit" name="launch" value="Use Instance">
+    </form>
+
+
+</body>
+
+<script>
+    function update(){
+        console.log("Hii")
+       const myhttp = new XMLHttpRequest();
+                myhttp.onreadystatechange = function(){
+                    if(this.readyState == 4){
+                        var detail = JSON.parse(myhttp.responseText)
+                        document.getElementById("welcome").innerHTML = "Welcome " + detail.FirstName + " " + detail.LastName ;
+                        console.log(detail)
+                    }
+                }
+                    
+                myhttp.open("post","/dashbordinfo",true)
+                myhttp.send()
+                tableupdate()
+    }    
+   function tableupdate() {
+
+
+    const myhttp = new XMLHttpRequest();
+                myhttp.onreadystatechange = function(){
+                    if(this.readyState == 4){
+                        var instancetabledetail = JSON.parse(myhttp.responseText)
+                                console.log(instancetabledetail);
+            let myTable = document.querySelector('#table');
+                let employees = instancetabledetail; 
+                var headers = ['Object ID','Your Email ID','Instance Name', 'OS', 'Instance ID', 'type','Security Group','Subnet ID'];
+                    let table = document.createElement('table');
+                    let headerRow = document.createElement('tr');
+                    headers.forEach(headerText => {
+                        let header = document.createElement('th');
+                        let textNode = document.createTextNode(headerText);
+                        header.appendChild(textNode);
+                        headerRow.appendChild(header);
+                    });
+                    table.appendChild(headerRow);
+                    employees.forEach(emp => {
+                        let row = document.createElement('tr');
+                        Object.values(emp).forEach(text => {
+                            let cell = document.createElement('td');
+                            let textNode = document.createTextNode(text);
+                            cell.appendChild(textNode);
+                            row.appendChild(cell);
+                        })
+                        table.appendChild(row);
+                    });
+                    myTable.appendChild(table);
+
+                    }
+                }
+                    
+                myhttp.open("post","/Instanceinfo",true)
+                myhttp.send()
+
+
+               
+    }
+
+</script>
+
+</html>

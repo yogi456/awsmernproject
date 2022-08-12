@@ -1,0 +1,131 @@
+vid2 =----------------
+
+Creating a ec2 key-pair
+-------------------------------------
+ 
+aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem  // for cmd 
+
+
+
+To describe key pairs
+-----------------------------------
+aws ec2 describe-key-pairs
+
+
+
+
+To describe security groups
+-----------------------------------
+aws ec2 describe-security-groups
+
+
+
+To describe vpcs	
+---------------------------------
+aws ec2 describe-vpcs
+
+
+To create security group
+----------------------------------
+aws ec2 create-security-group --group-name SelfOnlyGroup --description "Security Group for self access only" --vpc-id vpc-095e73d565d4ddf94
+ 
+
+Adding rule to empty security group
+-------------------------------------
+aws ec2 authorize-security-group-ingress --group-id sg-0c1e90a20de4fcb09 sg-0d63ef239d73bc0bc --protocol tcp --port 22 --cidr 106.206.174.167/32
+
+
+To get Subnet ids
+----------------------------------
+aws ec2 describe-subnets
+
+
+To create instance 
+------------------------------------------
+aws ec2 run-instances --image-id ami-076e3a557efe1aa9c --count 1 --instance-type t2.micro --key-name MyFirstKeyPair --security-group-ids sg-0abe18a16c2ac5899 --subnet-id subnet-02aa0d0b827f65bf2
+
+
+To see instances
+------------------------------------------
+aws ec2 describe-instances --query "Reservations[].Instances[].InstanceId"
+
+
+To get public IP add
+-------------------------------------------
+aws ec2 describe-instances --query "Reservations[].Instances[].PublicIpAddress"
+
+
+
+
+
+To connect
+----------------------------------
+ssh -i MyFirstKeyPair.pem ec2-user@3.109.217.198
+
+
+
+To delete key pair
+------------------------------------
+aws ec2 delete-key-pair --key-name MyFirstKeyPair
+
+
+To terminate instance 
+--------------------------------------
+
+aws ec2 stop-instances --instance-id i-0ed551910a36dc6e1
+
+aws ec2 terminate-instances --instance-id i-0ed551910a36dc6e1
+
+
+
+
+To delete a security froup
+---------------------------------------
+aws ec2 delete-security-group --group-id sg-00c50bf8811fa4956
+
+
+add name tag to our inatsnce 
+--------------------------------------
+aws ec2 create-tags --resources i-wef43243252525   --tags Key=Name,Value=<instance name name>
+
+
+To get public ip of instabnce 
+----------------------------------------
+ aws ec2 describe-instances --instance-ids i-0886bb90ed5d2759b --query 'Reservations[*]. Instances[*]. PublicIpAddress'
+
+
+rm -rf 
+----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
