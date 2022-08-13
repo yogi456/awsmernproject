@@ -1,0 +1,112 @@
+
+*{
+    margin:0;
+    padding: 0;
+    font-family: sans-serif;
+
+    text-align: center;
+}
+div {
+    display: inline-block;
+    
+}
+
+#table {
+    display: block;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #009688;
+}
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.banner{
+    width:100%;
+    height:100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.486),rgba(0,0,0,0.486)),url(bg3.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+p{
+    border: 2px solid black;
+    width: 100%;
+    color: #2ae7d4;
+    top: 20px;
+}
+
+.btn{
+    margin: 10px 30px;
+    width: 120px;
+    left: 19px;
+    height: 40px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 0 3px 2px rgba(0, 0,0, .2);
+    font-weight: bolder;
+    border: 2px solid #009688;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 300ms;
+    transition: background 200ms;  
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position:relative;
+    overflow: hidden;
+}
+
+.btn:hover{
+    background: #45eca6;
+    color: black;
+    box-shadow: 0 0 4px 5px rgba(61, 218, 74, 0.5);
+        
+}
+
+.txt{
+    margin: 10px 30px;
+    width: 120px;
+    height: 20px;
+    text-align: center;
+}
+#launch{
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 0 3px 2px rgba(0, 0,0, .2);
+    font-weight: bolder;
+    border: 2px solid #009688;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 300ms;
+    transition: background 200ms;  
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position:relative;
+    overflow: hidden;
+}
+
+#launch:hover{
+    background: #2ae7d4;
+    color: black;
+    box-shadow: 0 0 4px 5px rgba(61, 218, 74, 0.5);
+        
+}
+
+.button{
+    background: transparent;
+}
+
+
+
+
