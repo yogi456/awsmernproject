@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #console{
+            width: 50%;
+            height: 500px;
+            border: 2px solid blue;
+            float: left;
+        }
+    </style>
+    
+</head>
+<body style="background-color:  rgb(231, 206, 206);" onload="getip()" >
+    <h2 style="  text-align: center; color: rgb(48, 64, 203); " id="publicip" ></h2>
+    <div id="console">
+        <pre id="consolepre"></pre>
+    </div>
+    
+    <input id="getcommand"  >
+    <script>
+        document.getElementById("getcommand").addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                                        ConsoleUpdate();
+                                         }
+                    });
+
+        function ConsoleUpdate()
+        {
+            const myhttp = new XMLHttpRequest();
+            myhttp.onreadystatechange = function(){
+                if(this.readyState == 4){
+                    document.getElementById("consolepre").innerHTML +=  myhttp.responseText;
+                }
+            }
+                
+            myhttp.open("post","/ConsoleUpdate",true)
+            myhttp.setRequestHeader("Content-Type","application/json")
+            var command = {name: document.getElementById("getcommand").value } ;
+            var toserver = JSON.stringify(command);
+            myhttp.send(toserver)
+            document.getElementById("getcommand").value = "";
+        }
+
+        function getip()
+        {
+            const myhttp = new XMLHttpRequest();
+            myhttp.onreadystatechange = function(){
+                if(this.readyState == 4){
+                    document.getElementById("publicip").innerHTML =  "Public Ip --  " + myhttp.responseText;
+                }
+            }
+            myhttp.open("post","/CurrentIp",true)
+            myhttp.send()
+        }
+
+</script>
+</body>
+</html>
